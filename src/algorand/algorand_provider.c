@@ -113,7 +113,7 @@ provider_tx_params_load(transaction_t *tx)
             if (m_provider.version.update_count == 0)
             {
                 const cJSON
-                    *genesis_hash = cJSON_GetObjectItemCaseSensitive(json, "genesis_hash_b64");
+                    *genesis_hash = cJSON_GetObjectItemCaseSensitive(json, "genesis-hash");
                 if (cJSON_IsString(genesis_hash) && (genesis_hash->valuestring != NULL))
                 {
                     size_t output_size = sizeof tx->genesis_hash;

@@ -56,6 +56,8 @@ elseif (COMPILE_ZEPHYR)
     zephyr_interface_library_named(vertices)
     zephyr_library()
     zephyr_library_sources(${VERTICES_SRC_FILES})
+    zephyr_library_sources(../external/cJSON/cJSON.c)
+    zephyr_library_sources(../external/cJSON/libc_fixups.c)
     zephyr_include_directories(
             ${VERTICES_INC_DIRS}
             ../include
@@ -66,6 +68,7 @@ elseif (COMPILE_ZEPHYR)
 
     zephyr_compile_options(-DMPACK_STDIO=0)
     zephyr_compile_options(-DMPACK_STDLIB=0)
+    zephyr_compile_options(-mlongcalls)
 
     zephyr_library_link_libraries(vertices)
     target_link_libraries(vertices INTERFACE zephyr_interface)
